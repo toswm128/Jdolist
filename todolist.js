@@ -33,28 +33,26 @@ function del(event){
     saveTodo();
 }
 
-function returnSccss(event){
-    const box=event.target;
-    box.innerText = "⚪";
-    
-    console.log("bye");
-}
-
 function success(event){
     const box=event.target;
-    box.innerText = "✔";
-    box.addEventListener("click", returnSccss);
-    console.log("hi");
+    const li = box.parentNode;
+    const span = box.previousSibling
+    if(box.checked===true){
+        span.classList.add("on");
+    } else{
+        span.classList.remove("on");
+    }
 }
 
 function paintToDo(text){
     const li = document.createElement("li");
     const span = document.createElement("span");
-    const successBox = document.createElement("button");
+    const successBox = document.createElement("input");
     const delButton = document.createElement("button");
     const id = toDos.length;
+    successBox.type = "checkbox";
     li.id = id;
-    successBox.addEventListener("click",success);
+    successBox.addEventListener("click",success);   
     delButton.addEventListener("click",del);
     span.innerText=text;
     delButton.innerText="✖";
