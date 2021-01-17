@@ -10,7 +10,7 @@ function saveTodo(){
 }
 
 function eachPaint(toDo){
-    paintToDo(toDo.text);
+    paintToDo(toDo.text,toDo.check);
 }
 
 function loadToDo(){
@@ -38,21 +38,29 @@ function success(event){
     const li = box.parentNode;
     const span = box.previousSibling
     if(box.checked===true){
-        span.classList.add("on");
+        li.classList.add("true");
+        toDos[li.id].check = true;
+        console.log(toDos[li.id].check);
     } else{
-        span.classList.remove("on");
+        li.classList.remove("true");
+        toDos[li.id].check = false;
+        console.log(toDos[li.id].check);
     }
+    saveTodo();
 }
 
-function paintToDo(text){
+function paintToDo(text,check){
     const li = document.createElement("li");
     const span = document.createElement("span");
     const successBox = document.createElement("input");
     const delButton = document.createElement("button");
     const id = toDos.length;
     successBox.type = "checkbox";
+    successBox.checked = check;
+    li.classList.add(check);
     li.id = id;
-    successBox.addEventListener("click",success);   
+    successBox.checked   
+    successBox.addEventListener("click",success);
     delButton.addEventListener("click",del);
     span.innerText=text;
     delButton.innerText="✖";
@@ -63,7 +71,8 @@ function paintToDo(text){
     list.appendChild(li);
     const toDoData = {
         text,
-        id
+        id,
+        check:check
     }
     toDos.push(toDoData);
     saveTodo();
