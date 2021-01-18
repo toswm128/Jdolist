@@ -1,6 +1,9 @@
 const form = document.querySelector(".js-form"),
     input = form.querySelector("input"),
-    list = document.querySelector("ul");
+    list = document.querySelector("ul"),
+    To = document.querySelector(".to"),
+    Do = document.querySelector(".do"),
+    perc = document.querySelector(".perc");
 
 let toDos = [];
 const TODO_LS = "toDos";
@@ -19,6 +22,7 @@ function loadToDo(){
         const paintToDos = JSON.parse(loadToDos);
         paintToDos.forEach(eachPaint);
     }
+    percent();
 }
 
 function del(event){
@@ -36,7 +40,6 @@ function del(event){
 function success(event){
     const box=event.target;
     const li = box.parentNode;
-    const span = box.previousSibling
     if(box.checked===true){
         li.classList.add("true");
         toDos[li.id].check = true;
@@ -47,6 +50,19 @@ function success(event){
         console.log(toDos[li.id].check);
     }
     saveTodo();
+}
+
+function percent(){
+    const toDo = toDos.length;
+    let i=0;
+    let successToDo=0;
+    for(i=0;i<toDo;i++){
+        if(toDos[i].check === true){
+            successToDo++;
+        }
+    }
+    To.innerText=toDo;
+    Do.innerText=successToDo;
 }
 
 function paintToDo(text,check){
@@ -61,6 +77,7 @@ function paintToDo(text,check){
     li.id = id;
     successBox.checked   
     successBox.addEventListener("click",success);
+    successBox.addEventListener("click",percent);
     delButton.addEventListener("click",del);
     span.innerText=text;
     delButton.innerText="✖";
