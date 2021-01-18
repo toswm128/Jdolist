@@ -61,8 +61,9 @@ function percent(){
             successToDo++;
         }
     }
-    To.innerText=toDo;
-    Do.innerText=successToDo;
+    To.innerText=`할일 목록${toDo-successToDo}개`;
+    Do.innerText=`한일 목록${successToDo}개`;
+    perc.innerText = `한일 퍼센트${(successToDo/toDo)*100}%`;
 }
 
 function paintToDo(text,check){
