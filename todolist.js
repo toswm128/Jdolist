@@ -63,7 +63,7 @@ function percent(){
     }
     To.innerText=`할일 목록${toDo-successToDo}개`;
     Do.innerText=`한일 목록${successToDo}개`;
-    perc.innerText = `한일 퍼센트${(successToDo/toDo)*100}%`;
+    perc.innerText = `한일 퍼센트${Math.round((successToDo/toDo)*100)}%`;
 }
 
 function paintToDo(text,check){
@@ -80,6 +80,7 @@ function paintToDo(text,check){
     successBox.addEventListener("click",success);
     successBox.addEventListener("click",percent);
     delButton.addEventListener("click",del);
+    delButton.addEventListener("click",percent);
     span.innerText=text;
     delButton.innerText="✖";
     successBox.innerText="⚪";
@@ -94,6 +95,7 @@ function paintToDo(text,check){
     }
     toDos.push(toDoData);
     saveTodo();
+    percent();
 }
 
 function submit(event){
