@@ -43,11 +43,9 @@ function success(event){
     if(box.checked===true){
         li.classList.add("true");
         toDos[li.id].check = true;
-        console.log(toDos[li.id].check);
     } else{
         li.classList.remove("true");
         toDos[li.id].check = false;
-        console.log(toDos[li.id].check);
     }
     saveTodo();
 }
@@ -66,9 +64,20 @@ function percent(){
     perc.innerText = `한일 퍼센트${Math.round((successToDo/toDo)*100)}%`;
 }
 
+function clock(){
+    const date = new Date;
+    const year = date.getFullYear();
+    const mon = date.getMonth();
+    const day = date.getDate();
+    const hour = date.getHours();
+    const min = date.getMinutes();
+    return `${year}.${mon}.${day}.${hour}.${min}`
+}
+
 function paintToDo(text,check){
     const li = document.createElement("li");
     const span = document.createElement("span");
+    const spanTime = document.createElement("span");
     const successBox = document.createElement("input");
     const delButton = document.createElement("button");
     const id = toDos.length;
@@ -84,7 +93,9 @@ function paintToDo(text,check){
     span.innerText=text;
     delButton.innerText="✖";
     successBox.innerText="⚪";
+    spanTime.innerText = clock();
     li.appendChild(span);
+    li.appendChild(spanTime);
     li.appendChild(successBox);
     li.appendChild(delButton);
     list.appendChild(li);
@@ -109,6 +120,7 @@ function submit(event){
 function init(){
     loadToDo();
     form.addEventListener("submit",submit);
+    clock();
 }
 
 init();
