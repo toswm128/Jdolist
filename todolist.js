@@ -12,8 +12,9 @@ function saveTodo(){
     localStorage.setItem(TODO_LS,JSON.stringify(toDos));
 }
 
+
 function eachPaint(toDo){
-    paintToDo(toDo.text,toDo.check);
+    paintToDo(toDo.text,toDo.check,toDo.timeLine);
 }
 
 function loadToDo(){
@@ -67,14 +68,14 @@ function percent(){
 function clock(){
     const date = new Date;
     const year = date.getFullYear();
-    const mon = date.getMonth();
+    const mon = date.getMonth()+1;
     const day = date.getDate();
     const hour = date.getHours();
     const min = date.getMinutes();
     return `${year}.${mon}.${day}.${hour}.${min}`
 }
 
-function paintToDo(text,check){
+function paintToDo(text,check,timeLine){
     const li = document.createElement("li");
     const span = document.createElement("span");
     const spanTime = document.createElement("span");
@@ -93,7 +94,8 @@ function paintToDo(text,check){
     span.innerText=text;
     delButton.innerText="✖";
     successBox.innerText="⚪";
-    spanTime.innerText = clock();
+    spanTime.innerText = timeLine;
+
     li.appendChild(span);
     li.appendChild(spanTime);
     li.appendChild(successBox);
@@ -102,7 +104,8 @@ function paintToDo(text,check){
     const toDoData = {
         text,
         id,
-        check:check
+        check:check,
+        timeLine:timeLine
     }
     toDos.push(toDoData);
     saveTodo();
@@ -112,7 +115,8 @@ function paintToDo(text,check){
 function submit(event){
     event.preventDefault()
     const text = input.value;
-    paintToDo(text);
+    const time = clock();
+    paintToDo(text,false,time);
     input.value = "";
 }
 
@@ -120,7 +124,6 @@ function submit(event){
 function init(){
     loadToDo();
     form.addEventListener("submit",submit);
-    clock();
 }
 
 init();
