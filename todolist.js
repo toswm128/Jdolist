@@ -60,9 +60,17 @@ function percent(){
             successToDo++;
         }
     }
-    To.innerText=`할일 목록${toDo-successToDo}개`;
-    Do.innerText=`한일 목록${successToDo}개`;
-    perc.innerText = `한일 퍼센트${Math.round((successToDo/toDo)*100)}%`;
+    const per = Math.round((successToDo/toDo)*100);
+    if(toDo !== 0){
+        To.innerText=`할일 목록${toDo-successToDo}개`;
+        Do.innerText=`한일 목록${successToDo}개`;
+        perc.innerText = `한일 퍼센트${per}%`;
+    }else{
+        To.innerText =`할일 목록0개`
+        Do.innerText =`한일 목록0개`
+        perc.innerText =`한일 퍼센트0%`
+        
+    }
 }
 
 function clock(){
