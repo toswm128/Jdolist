@@ -2,3 +2,12 @@
     color: dimgray;
     text-decoration-line:line-through
 }
+
+.block{
+    display: inline;
+}
+
+
+li input,li button{
+    display: none;
+}

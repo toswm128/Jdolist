@@ -83,6 +83,23 @@ function clock(){
     return `${year}.${mon}.${day}.${hour}.${min}`
 }
 
+function displayBlock(event){
+    console.log("hey")
+    const li = event.target;
+    const check = li.querySelector("input");
+    const delBtn = li.querySelector("button");
+    check.classList.add("block");
+    delBtn.classList.add("block");
+}
+
+function displayNone(event){
+    const li = event.target;
+    const check = li.querySelector("input");
+    const delBtn = li.querySelector("button");
+    check.classList.remove("block");
+    delBtn.classList.remove("block");
+}
+
 function paintToDo(text,check,timeLine){
     const li = document.createElement("li");
     const span = document.createElement("span");
@@ -99,13 +116,15 @@ function paintToDo(text,check,timeLine){
     successBox.addEventListener("click",percent);
     delButton.addEventListener("click",del);
     delButton.addEventListener("click",percent);
+    li.addEventListener("mouseenter", displayBlock);
+    li.addEventListener("mouseleave", displayNone);
     span.innerText=text;
     delButton.innerText="✖";
     successBox.innerText="⚪";
     spanTime.innerText = timeLine;
 
-    li.appendChild(span);
     li.appendChild(spanTime);
+    li.appendChild(span);
     li.appendChild(successBox);
     li.appendChild(delButton);
     list.appendChild(li);
