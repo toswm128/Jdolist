@@ -84,7 +84,6 @@ function clock(){
 }
 
 function displayBlock(event){
-    console.log("hey")
     const li = event.target;
     const check = li.querySelector("input");
     const delBtn = li.querySelector("button");
@@ -110,6 +109,8 @@ function paintToDo(text,check,timeLine){
     successBox.type = "checkbox";
     successBox.checked = check;
     li.classList.add(check);
+    span.classList.add("text");
+    spanTime.classList.add("time");
     li.id = id;
     successBox.checked   
     successBox.addEventListener("click",success);

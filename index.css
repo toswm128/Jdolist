@@ -11,3 +11,34 @@
 li input,li button{
     display: none;
 }
+
+li{
+    display: grid;
+    width: 100%;
+    height:5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:  
+    "time check"
+    "text button";
+}
+
+.text{
+    grid-area: text;
+}
+
+.time{
+    grid-area: time;
+}
+
+input[type=checkbox]{
+    grid-area: check;
+    
+}
+
+button{
+    grid-area: button;
+    border:none;
+    outline: none;
+}
+
+
