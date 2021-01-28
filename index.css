@@ -61,6 +61,7 @@ input[type=checkbox]{
     -webkit-appearance: none;
     background-color: whitesmoke;
     outline: none;
+    cursor: pointer;
 }
 
 input[type=checkbox]:checked{
@@ -74,6 +75,7 @@ button{
     border:none;
     outline: none;
     background-color: whitesmoke;
+    cursor: pointer;
 }
 
 button:hover{
