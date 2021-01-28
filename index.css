@@ -1,3 +1,9 @@
+
+.head{
+    display: flex;
+    justify-content: space-around;
+}
+
 .true{
     color: dimgray;
     text-decoration-line:line-through
