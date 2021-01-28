@@ -1,17 +1,23 @@
 
 .head{
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+h2{
+    width:100%; 
 }
 
 .true{
     color: dimgray;
-    text-decoration-line:line-through
+    text-decoration-line:line-through;
+    background-color: rgba(0, 0, 0, 0.01);
 }
 
 .block{
     display: inline;
 }
+
 
 
 li input,li button{
@@ -21,12 +27,22 @@ li input,li button{
 li{
     display: grid;
     width: 100%;
-    height:5rem;
-    grid-template-columns: 1fr 1fr;
+    min-height:4rem;
+    max-height: 100rem;
+    padding: none;
+    margin-bottom:20px;
+    border-bottom: 2px solid black ;
+    grid-template-columns: 1fr  2rem 2rem;
+    grid-template-rows: 2rem auto;
     grid-template-areas:  
-    "time check"
-    "text button";
+    "time check button"
+    "text text text";
 }
+li:hover{
+    background-color: whitesmoke
+}
+
+
 
 .text{
     grid-area: text;
@@ -38,13 +54,30 @@ li{
 
 input[type=checkbox]{
     grid-area: check;
-    
+    margin: 0;
+    width: 100%;
+    height:100%;
+    border: 1px solid black;
+    -webkit-appearance: none;
+    background-color: whitesmoke;
+    outline: none;
+}
+
+input[type=checkbox]:checked{
+    background-color: rgb(0, 255, 0);
+    display: inline;
+    border:0;
 }
 
 button{
     grid-area: button;
     border:none;
     outline: none;
+    background-color: whitesmoke;
+}
+
+button:hover{
+    background-color: rgb(255, 0, 0);
 }
 
 
